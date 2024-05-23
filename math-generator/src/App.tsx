@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import Variables from "./Variables";
 import Transformations from "./Transformations";
+import Rearrangements from "./Rearrangements";
 
 function App() {
   function getRandomDecimal() {
@@ -53,11 +54,13 @@ function App() {
       )
     );
   }
+  let c_in_front_a = Math.random() < 0.2;
+  let k_unfactored = Math.random() < 0.3;
 
   return (
     <>
       <div>
-        <Variables a={a} b={b} k={k} d={d} c={c} f={f} />
+        <Variables a={a} b={b} k={k} d={d} c={c} f={f} c_in_front_a={c_in_front_a} k_unfactored={k_unfactored}/>
       </div>
       <div>
         <select
@@ -211,6 +214,9 @@ function App() {
       </div>
       <div>
         <Transformations a={a} k={k} d={d} c={c} f={f} />
+      </div>
+      <div>
+      <Rearrangements a={a} k={k} d={d} c={c} f={f} b={b} c_in_front_a={c_in_front_a} k_unfactored={k_unfactored}/>
       </div>
     </>
   );

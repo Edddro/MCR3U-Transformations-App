@@ -49,7 +49,7 @@ const Transformations = ({ a, k, d, c }: VariableProps) => {
                     <div>
                         <p className="transformations-text">
                             {transformations.map((transformation, index) => (
-                                <div key={index}>{transformation ? "-" + transformation : ""}</div>
+                                <div key={index}>{transformation ? "- " + transformation : ""}</div>
                             ))}
                           {transformations.length === 0 && <div key={0}>No transformations. Generate a new equation!</div>}
                         </p>
