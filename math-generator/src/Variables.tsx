@@ -40,7 +40,7 @@ let Variables = ({ a, k, d, c, f, b, c_in_front_a, k_unfactored }: VariableProps
         a_fraction,
         k_fraction,
         d,
-        b ? (a === 1 && b < 0 ? `(${b})` : b) : 2
+        Number(b ? (a === 1 && b < 0 ? `(${b})` : b) : 2)
       );
       break;
     case "√x":

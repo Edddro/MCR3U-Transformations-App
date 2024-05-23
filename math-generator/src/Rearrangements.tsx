@@ -40,8 +40,8 @@ const Rearrangements = ({
         a_fraction,
         k_fraction,
         d,
-        b ? (a === 1 && b < 0 ? `(${b})` : b) : 2
-      );
+        Number(b ? (a === 1 && b < 0 ? `(${b})` : b) : 2)
+      );0
       break;
     case "√x":
       renderedFn = renderSquareRootFunction(a_fraction, k_fraction, d);
@@ -166,7 +166,7 @@ const Rearrangements = ({
   }
 
   function renderAWithC(a: Fraction, c: number) {
-    return c !== 0
+    return c_in_front_a && c !== 0
       ? c +
           (Number(a) > 0
             ? " + "
@@ -174,11 +174,15 @@ const Rearrangements = ({
       : "";
   }
 
+  function renderCValueWithA(c: number) {
+    return k_unfactored && c_in_front_a ? "" : c === 0 ? "" : (c > 0 ? " + " : " - ") + Math.abs(c);
+  }
+
   const rearrangements = [
     `${
       k_unfactored && k !== 1
-        ? "- Factor out k from the equation: " +
-          `\\(g\\left(x\\right) = ${renderAWithC(a_fraction, c)}${renderedFn}\\)`
+        ? "- Factor out k from the x and d values: " +
+          `\\(g\\left(x\\right) = ${renderAWithC(a_fraction, c)}${renderedFn}${renderCValueWithA(c)}\\)`
         : ""
     }`,
     `${
