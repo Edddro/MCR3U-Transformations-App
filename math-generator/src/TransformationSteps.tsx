@@ -11,7 +11,7 @@ interface VariableProps {
   b?: number;
 }
 
-const TransformationSteps = ({ a, k, d, c, f }: VariableProps) => {
+const TransformationSteps = ({ a, k, d, c }: VariableProps) => {
   const steps = [
     `\\((x, y) \\rightarrow\\ (\\frac{x}{k} + d, ay + c)\\)`,
     `\\((x, y) \\rightarrow\\ ${
