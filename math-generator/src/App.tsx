@@ -3,6 +3,7 @@ import "./App.css";
 import Variables from "./Variables";
 import Transformations from "./Transformations";
 import Rearrangements from "./Rearrangements";
+import TransformationSteps from "./TransformationSteps";
 
 function App() {
   function getRandomDecimal() {
@@ -60,7 +61,16 @@ function App() {
   return (
     <>
       <div>
-        <Variables a={a} b={b} k={k} d={d} c={c} f={f} c_in_front_a={c_in_front_a} k_unfactored={k_unfactored}/>
+        <Variables
+          a={a}
+          b={b}
+          k={k}
+          d={d}
+          c={c}
+          f={f}
+          c_in_front_a={c_in_front_a}
+          k_unfactored={k_unfactored}
+        />
       </div>
       <div>
         <select
@@ -216,7 +226,26 @@ function App() {
         <Transformations a={a} k={k} d={d} c={c} f={f} />
       </div>
       <div>
-      <Rearrangements a={a} k={k} d={d} c={c} f={f} b={b} c_in_front_a={c_in_front_a} k_unfactored={k_unfactored}/>
+        <Rearrangements
+          a={a}
+          k={k}
+          d={d}
+          c={c}
+          f={f}
+          b={b}
+          c_in_front_a={c_in_front_a}
+          k_unfactored={k_unfactored}
+        />
+      </div>
+      <div>
+        <TransformationSteps
+          a={a}
+          k={k}
+          d={d}
+          c={c}
+          f={f}
+          b={b}
+        />
       </div>
     </>
   );

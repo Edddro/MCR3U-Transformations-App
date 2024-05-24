@@ -1,8 +1,10 @@
 - have a section where users input coordinates and it will display valid points or invalid points based on the parent function
 - show the steps to do the transformation from start to finish
     - generate 5 points that support the parent function
-    - show the mapping statement: (x,y) --> (x/k + d, ay+c) and sub in the generated points
+    - fix the transformation steps to reciprocate the k value if less than 0 and not equal to -1
     - show the displayed points
+- Generate bigger numbers for sine and cosine
+- fix the random rerrangement to only run when the equation is regenerated
 - add a graph for the user's points or the generated points
 - clean the code for generating numbers
 - make the ui/ux better

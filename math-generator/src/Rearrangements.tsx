@@ -41,7 +41,7 @@ const Rearrangements = ({
         k_fraction,
         d,
         Number(b ? (a === 1 && b < 0 ? `(${b})` : b) : 2)
-      );0
+      );
       break;
     case "√x":
       renderedFn = renderSquareRootFunction(a_fraction, k_fraction, d);
@@ -68,7 +68,7 @@ const Rearrangements = ({
 
   function renderFunctionInner(k: Fraction, d: number) {
     // If k is 1, we don't need inner parentheses
-    if (k.n === 1 && k.d === 1) {
+    if (k.n === 1 && k.d === 1 && k.s === 1) {
       return (
         "x" +
         (d !== 0
@@ -77,7 +77,8 @@ const Rearrangements = ({
       );
     }
 
-    const renderedK = k.n === -1 && k.d === 1 ? "-" : renderFraction(k);
+    const renderedK =
+      k.n === 1 && k.d === 1 && k.s === -1 ? "-" : renderFraction(k);
     return `${renderedK}(x${
       d !== 0
         ? (d > 0 ? " - " : " + ") + renderFraction(new Fraction(Math.abs(d)))
@@ -166,23 +167,25 @@ const Rearrangements = ({
   }
 
   function renderAWithC(a: Fraction, c: number) {
-    return c_in_front_a && c !== 0
-      ? c +
-          (Number(a) > 0
-            ? " + "
-            : "")
-      : "";
+    return c_in_front_a && c !== 0 ? c + (Number(a) > 0 ? " + " : "") : "";
   }
 
   function renderCValueWithA(c: number) {
-    return k_unfactored && c_in_front_a ? "" : c === 0 ? "" : (c > 0 ? " + " : " - ") + Math.abs(c);
+    return k_unfactored && c_in_front_a
+      ? ""
+      : c === 0
+      ? ""
+      : (c > 0 ? " + " : " - ") + Math.abs(c);
   }
 
   const rearrangements = [
     `${
       k_unfactored && k !== 1
         ? "- Factor out k from the x and d values: " +
-          `\\(g\\left(x\\right) = ${renderAWithC(a_fraction, c)}${renderedFn}${renderCValueWithA(c)}\\)`
+          `\\(g\\left(x\\right) = ${renderAWithC(
+            a_fraction,
+            c
+          )}${renderedFn}${renderCValueWithA(c)}\\)`
         : ""
     }`,
     `${
