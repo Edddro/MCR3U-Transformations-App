@@ -206,7 +206,7 @@ const Rearrangements = ({
   return (
     <>
       <MathJaxContext>
-        <MathJax>
+        <MathJax dynamic>
           <div>
             <button className="see-button" onClick={() => setIsOpen(!isOpen)}>
               {isOpen ? "Hide" : "Show"} Rearrangements

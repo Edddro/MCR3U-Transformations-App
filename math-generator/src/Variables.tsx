@@ -61,7 +61,7 @@ let Variables = ({ a, k, d, c, f, b, c_in_front_a, k_unfactored }: VariableProps
     <div>
       <h1>
         <MathJaxContext>
-          <MathJax>
+          <MathJax dynamic>
             {`\\(g\\left(x\\right) = ${renderedFn}${renderCValue(
               c,
               c_in_front_a
@@ -71,7 +71,7 @@ let Variables = ({ a, k, d, c, f, b, c_in_front_a, k_unfactored }: VariableProps
       </h1>
       <h2>
         <MathJaxContext>
-          <MathJax>
+          <MathJax dynamic>
             {`Parent Function: \\(${renderParentFunction(f)}\\)`}
           </MathJax>
         </MathJaxContext>

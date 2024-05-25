@@ -73,7 +73,7 @@ const Transformations = ({ a, k, d, c, f }: VariableProps) => {
   return (
     <>
       <MathJaxContext>
-        <MathJax>
+        <MathJax dynamic>
           <div>
             <button className="see-button" onClick={() => setIsOpen(!isOpen)}>
               {isOpen ? "Hide" : "Show"} Transformations
