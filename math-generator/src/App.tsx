@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./App.css";
+import "./index.css";
 import Variables from "./Variables";
 import Transformations from "./Transformations";
 import Rearrangements from "./Rearrangements";
@@ -26,19 +26,18 @@ function App() {
     return value;
   }
 
+  const [f, setF] = useState("");
   const [a, setA] = useState(getRandomDecimal());
   const [k, setK] = useState(getRandomDecimal());
-  const [d, setD] = useState(
+  const [d, setD] = useState(f !== "cos(x)" && f !== "sin(x)" ?
     Math.floor(
       Math.random() * (Math.floor(10) - Math.ceil(-5) + 1) + Math.ceil(-5)
-    )
-  );
+    ) : Math.random() < 0.5 ? 0 - Math.floor(Math.random() * 67) * 15 : 0 + Math.floor(Math.random() * 67) * 15);
   const [c, setC] = useState(
     Math.floor(
       Math.random() * (Math.floor(15) - Math.ceil(-5) + 1) + Math.ceil(-5)
     )
   );
-  const [f, setF] = useState("");
   const [b, setB] = useState(() => {
     if (f === "b^x") {
       return Math.floor(
@@ -121,12 +120,10 @@ function App() {
         <button onClick={() => setK(getRandomDecimal())}>Generate K</button>
         <button
           onClick={() =>
-            setD(
-              Math.floor(
-                Math.random() * (Math.floor(10) - Math.ceil(-5) + 1) +
-                  Math.ceil(-5)
-              )
-            )
+            setD(f !== "cos(x)" && f !== "sin(x)" ?
+            Math.floor(
+              Math.random() * (Math.floor(10) - Math.ceil(-5) + 1) + Math.ceil(-5)
+            ) : Math.random() < 0.5 ? 0 - Math.floor(Math.random() * 67) * 15 : 0 + Math.floor(Math.random() * 67) * 15)
           }
         >
           Generate D
@@ -147,12 +144,10 @@ function App() {
           onClick={() => {
             setA(getRandomDecimal());
             setK(getRandomDecimal());
-            setD(
-              Math.floor(
-                Math.random() * (Math.floor(10) - Math.ceil(-5) + 1) +
-                  Math.ceil(-5)
-              )
-            );
+            setD(f !== "cos(x)" && f !== "sin(x)" ?
+            Math.floor(
+              Math.random() * (Math.floor(10) - Math.ceil(-5) + 1) + Math.ceil(-5)
+            ) : Math.random() < 0.5 ? 0 - Math.floor(Math.random() * 67) * 15 : 0 + Math.floor(Math.random() * 67) * 15);
             setC(
               Math.floor(
                 Math.random() * (Math.floor(15) - Math.ceil(-5) + 1) +
@@ -188,28 +183,40 @@ function App() {
             if (!isNaN(value) && value !== 0 && value <= 100 && value >= -100) {
               setK(value);
             }
-          }}
-          className="input-box"
-        />
-        <input
-          type="number"
-          placeholder={"Set Value For D"}
-          onChange={(e) => {
+            }}
+            className="input-box"
+          />
+          <input
+            type="number"
+            placeholder={"Set Value For D"}
+            onChange={(e) => {
             const value = Number(e.target.value);
-            if (!isNaN(value) && value <= 100 && value >= -100) {
-              if (Number.isInteger(value)) {
+            if (!isNaN(value)) {
+              if (f !== "cos(x)" && f !== "sin(x)") {
+              if (value <= 100 && value >= -100) {
+                if (Number.isInteger(value)) {
                 setD(value);
-              } else {
+                } else {
                 setD(Math.floor(value));
+                }
+              }
+              } else {
+              if (value <= 1000 && value >= -1000) {
+                if (Number.isInteger(value)) {
+                setD(value);
+                } else {
+                setD(Math.floor(value));
+                }
+              }
               }
             }
-          }}
-          className="input-box"
-        />
-        <input
-          type="number"
-          placeholder={"Set Value For C"}
-          onChange={(e) => {
+            }}
+            className="input-box"
+          />
+          <input
+            type="number"
+            placeholder={"Set Value For C"}
+            onChange={(e) => {
             const value = Number(e.target.value);
             if (!isNaN(value) && value <= 100 && value >= -100) {
               if (Number.isInteger(value)) {
