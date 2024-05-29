@@ -43,7 +43,7 @@ const Transformations = ({ a, k, d, c, f }: VariableProps) => {
       d !== 0
         ? `${
             f === "cos(x)" || f === "sin(x)"
-              ? "Phase shift"
+              ? "Phase shifted"
               : "Horizontally translated"
           } \\(${renderFraction(new Fraction(Math.abs(d)))}\\) units to the ${
             d > 0 ? "right" : "left"
@@ -52,7 +52,10 @@ const Transformations = ({ a, k, d, c, f }: VariableProps) => {
     }`,
     `${
       c !== 0
-        ? `Vertically translated \\(${renderFraction(
+        ? `${
+          f === "cos(x)" || f === "sin(x)"
+            ? "Vertically shifted"
+            : `Vertically translated`} \\(${renderFraction(
             new Fraction(Math.abs(c))
           )}\\) units ${c > 0 ? "up" : "down"}`
         : ""

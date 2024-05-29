@@ -57,8 +57,15 @@ function App() {
   let c_in_front_a = Math.random() < 0.2;
   let k_unfactored = Math.random() < 0.3;
 
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
+
   return (
     <>
+    <div id="root" className={`${theme}`}>
+    <button className="change-mode" onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
+        {theme === 'light' ? '🌙' : '☀️'}
+      </button>
+    </div>
       <div>
         <Variables
           a={a}
